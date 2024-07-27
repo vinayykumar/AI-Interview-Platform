@@ -11,8 +11,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea"
-// import { ChatSession,sendMessage } from "@google/generative-ai";
 import {chatSession} from '../../../utils/GeminiAIModel'
+import { Loader2 } from "lucide-react";
+import {db} from '@/utils/db'
+import {ai_interview_schema} from '@/utils/schema'
+import {v4 as uuidv4} from 'uuid';
+import { useUser } from "@clerk/nextjs";
+import moment from 'moment'
 
 
 function AddNewInterview() {
@@ -20,14 +25,42 @@ function AddNewInterview() {
   const [jobPosition,setJobPosition] = useState("");
   const [jobDesc,setJobDesc] = useState("");
   const [jobExperience,setJobExperience] = useState();
+  const [loading,setLoading] = useState(false);
+  const [jsonResponse,setJSONResponse] = useState([])
+  const {user} = useUser();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     console.log(jobPosition,jobDesc,jobExperience)
+
     const InputPrompt = `Job Position: ${jobPosition} , Job Description: ${jobDesc} , Years of Experience: ${jobExperience} . Depend on this data provided, please generate 5 interview questions with answers in JSON Format. Give Question and answers as field in JSON format`
 
     const result = await chatSession.sendMessage(InputPrompt);
-    console.log(result.response.text());
+    const mockresponse = (result.response.text()).replace('```json','').replace('```','').trim();
+
+    console.log(JSON.parse(mockresponse));
+    setJSONResponse(mockresponse);
+
+    if(mockresponse){
+      const resp = await db.insert(ai_interview_schema).values({
+        mockId : uuidv4(),
+        jsonMockResponse : mockresponse,
+        jobPosition : jobPosition,
+        jobDescription : jobDesc,
+        jobExperience : jobExperience,
+        createdBy :  user?.primaryEmailAddress?.emailAddress,
+        createdAt : moment().format('DD-MM-yyyy')
+      }).returning({mockId:ai_interview_schema.mockId})
+      console.log("Inserted ID : ",resp)
+      if(resp){
+        setOpenDialog(false);
+      }
+    }
+    else{
+      console.log("An Error Occured ")
+    }
+    setLoading(false);
   }
 
   return (
@@ -68,7 +101,18 @@ function AddNewInterview() {
                   </div>
                   <div className="flex gap-4 justify-end mt-4">
                     <Button variant='ghost' onClick={()=>{setOpenDialog(false)}}>Cancel</Button>
-                    <Button onClick={handleSubmit}>Start Interview</Button>
+                    <Button 
+                      onClick={handleSubmit}
+                      disabled={loading}
+                      >
+                        {loading? 
+                          <div className="flex gap-2 justify-center items-center">
+                            <Loader2 className="animate-spin"></Loader2> Generating from AI
+                          </div>
+                          :
+                          'Start Interview'
+                        }
+                      </Button>
                   </div>
               </form>
             </DialogDescription>
