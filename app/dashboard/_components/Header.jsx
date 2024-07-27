@@ -12,7 +12,7 @@ function Header() {
   },[ ])
 
   return (
-    <div className='flex p-6 items-center justify-between border border-t-2'>
+    <div className='flex p-6 items-center justify-between border border-t-2 px-20'>
       <Image src='/logo.svg' width={160} height={160} alt='logo' />
       <div className='flex'>
         <ul className='hidden md:flex gap-6'>
@@ -22,7 +22,7 @@ function Header() {
           <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/how' && 'text-primary font-bold'}`}>How it works?</li>
         </ul>
       </div>
-      <div className='mr-2'>
+      <div>
         <UserButton />
       </div>
     </div>
