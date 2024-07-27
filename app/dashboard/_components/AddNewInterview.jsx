@@ -11,6 +11,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea"
+// import { ChatSession,sendMessage } from "@google/generative-ai";
+import {chatSession} from '../../../utils/GeminiAIModel'
 
 
 function AddNewInterview() {
@@ -19,11 +21,13 @@ function AddNewInterview() {
   const [jobDesc,setJobDesc] = useState("");
   const [jobExperience,setJobExperience] = useState();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(jobPosition);
-    console.log(jobDesc);
-    console.log(jobExperience);
+    console.log(jobPosition,jobDesc,jobExperience)
+    const InputPrompt = `Job Position: ${jobPosition} , Job Description: ${jobDesc} , Years of Experience: ${jobExperience} . Depend on this data provided, please generate 5 interview questions with answers in JSON Format. Give Question and answers as field in JSON format`
+
+    const result = await chatSession.sendMessage(InputPrompt);
+    console.log(result.response.text());
   }
 
   return (
@@ -40,6 +44,7 @@ function AddNewInterview() {
               <form onSubmit={handleSubmit}>
                   <div>
                     <h2>Add Details about your job position/role, Job description and years of experience. </h2>
+                    {/* input container */}
                     <div className="flex flex-col gap-4 mt-5">
                         <div className="flex flex-col gap-2">
                           <label>Job Role/ Job Description</label>
@@ -63,7 +68,7 @@ function AddNewInterview() {
                   </div>
                   <div className="flex gap-4 justify-end mt-4">
                     <Button variant='ghost' onClick={()=>{setOpenDialog(false)}}>Cancel</Button>
-                    <Button>Start Interview</Button>
+                    <Button onClick={handleSubmit}>Start Interview</Button>
                   </div>
               </form>
             </DialogDescription>
