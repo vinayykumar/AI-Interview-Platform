@@ -76,7 +76,7 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
     if(!isRecording && userAnswer?.length>10){
         UpdateUserAnswerInDB();
     }
-  },[userAnswer])
+  },[userAnswer,UpdateUserAnswerInDB])
 
 
   return (
