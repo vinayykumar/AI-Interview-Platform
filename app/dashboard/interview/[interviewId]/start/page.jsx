@@ -20,7 +20,7 @@ function StartInterview({params}) {
   const getInterviewDetails = async () => {
     const result = await db.select().from(ai_interview_schema).where(eq(ai_interview_schema.mockId,params.interviewId))
     const JSONResp =  JSON.parse(result[0]?.jsonMockResponse);
-    // console.log(JSONResp);
+    console.log(JSONResp);
     // console.log(result[0])
     setInterviewData(result[0]);
     setMockInterviewQuestion(JSONResp);
@@ -41,10 +41,10 @@ function StartInterview({params}) {
             />
         </div>
         <div  className='flex justify-end gap-6 mb-7'>
-          {activeQuestion>0 && <Button>Previous Question</Button>}
-          {activeQuestion<=4 && <Button >Next Question</Button> }
+          {activeQuestion>0 && <Button variant='outline' onClick={()=>setActiveQuestion(activeQuestion-1)}>Previous Question</Button>}
+          {activeQuestion<4 && <Button onClick={()=>setActiveQuestion(activeQuestion+1)}>Next Question</Button> }
+          {activeQuestion==4 && <Button className='bg-red-600 hover:bg-red-700'>End Interview</Button>}
           
-          <Button className='bg-red-600 hover:bg-red-700'>End Interview</Button>
         </div>
     </div>
   )

@@ -4,7 +4,7 @@ import Webcam from 'react-webcam'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button";
 import useSpeechToText from 'react-hook-speech-to-text';
-import { Mic } from 'lucide-react';
+import { Camera, CameraOff, Mic } from 'lucide-react';
 import { toast } from "sonner"
 import { chatSession } from '@/utils/GeminiAIModel';
 import { db } from '@/utils/db';
@@ -14,7 +14,7 @@ import moment from 'moment';
 
 
 function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewData}) {
-  const [isCamera,setIsCamera] = useState(false);
+  const [isCamera,setIsCamera] = useState(true);
   const [userAnswer,setUserAnswer] = useState('');
   const {user} = useUser();
   const [loading,setLoading] = useState(false);
@@ -79,7 +79,7 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
   return (
     <div className='flex flex-col justify-center items-center'>
         <div className='my-10 flex flex-col justify-center items-center bg-black rounded-lg p-5'>
-        {!isCamera && <div className='flex items-center justify-center w-96 h-80 h-400px'>
+        {isCamera==false && <div className='flex items-center justify-center w-96 h-80 h-400px'>
                 <Image 
                     src={'/webcam-symbol-icon-vector-logo-.png'}
                     width={160} height={160}
@@ -88,27 +88,29 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
             </div>}
                 {isCamera && <div className='flex items-center justify-center w-96 h-80 h-400px'>
                     <Webcam 
-                        style={{height:300,width:'100%',zIndex:10}}
+                        style={{height:260,width:'100%',zIndex:10}}
                         mirrored={true}/>
             </div> }
 
         </div>
-        <Button 
-            variant='outline'
-            disabled={loading}
-            onClick={SaveUserAnswer}>
-            {isRecording?
-                <h2 className='flex animate-pulse items-center gap-2 text-red-600'>
-                    <Mic></Mic> Recording...
-                </h2>:
-                'Record Answer'
-            }
-        </Button>
-        {/* <Button 
-        className='my-5'
-        onClick={()=>
-            {console.log(userAnswer)} 
-        }>Show Answer Log</Button> */}
+        <div className='flex gap-2'>
+            <Button 
+                variant='outline'
+                onClick={()=>setIsCamera(!isCamera)}>
+                    {isCamera ? <Camera /> : <CameraOff />}
+            </Button>
+            <Button 
+                variant='outline'
+                disabled={loading}
+                onClick={SaveUserAnswer}>
+                {isRecording?
+                    <h2 className='flex animate-pulse items-center gap-2 text-red-600'>
+                        <Mic></Mic> Recording...
+                    </h2>:
+                    'Record Answer'
+                }
+            </Button>
+        </div>
     </div>
   )
 }
