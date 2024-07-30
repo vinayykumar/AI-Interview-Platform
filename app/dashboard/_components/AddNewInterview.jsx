@@ -75,7 +75,7 @@ function AddNewInterview() {
       <Dialog open={openDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl">Let's get Started</DialogTitle>
+            <DialogTitle className={"text-2xl"}>Let's get Started</DialogTitle>
             <DialogDescription>
               <form onSubmit={handleSubmit}>
                   <div>

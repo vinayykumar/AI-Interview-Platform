@@ -15,11 +15,7 @@ import { useRouter } from "next/navigation";
 function Feedback({ params }) {
   const [feedBackList, setFeedBackList] = useState([]);
   const router = useRouter();
-
-  useEffect(() => {
-    getFeedBack();
-  }, []);
-
+  
   const getFeedBack = async () => {
     const result = await db
       .select()
@@ -29,6 +25,11 @@ function Feedback({ params }) {
     console.log(result);
     setFeedBackList(result);
   };
+  
+  useEffect(() => {
+    getFeedBack();
+  }, []);
+
 
   return (
     <div className="p-10">

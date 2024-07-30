@@ -7,9 +7,10 @@ import { usePathname } from 'next/navigation';
 function Header() {
 
   const path = usePathname();
-  useEffect(()=>{
-    console.log(path)
-  },[ ])
+  
+  // useEffect(()=>{
+  //   console.log(path)
+  // },[ ])
 
   return (
     <div className='flex p-6 items-center justify-between border border-t-2 px-20 bg-blue-50'>
@@ -17,7 +18,7 @@ function Header() {
       <div className='flex'>
         <ul className='hidden md:flex gap-6'>
           <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard' && 'text-primary font-bold'}`}>DashBoard</li>
-          <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/questions' && 'text-primary font-bold'}`}>Questions</li>
+            <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/questions' && 'text-primary font-bold'}`}>Questions</li>
           <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/upgrade' && 'text-primary font-bold'}`}>Upgrade</li>
           <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/how' && 'text-primary font-bold'}`}>How it works?</li>
         </ul>

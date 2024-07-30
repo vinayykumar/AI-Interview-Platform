@@ -10,11 +10,7 @@ function InterviewList() {
 
   const {user} = useUser();
   const [InterviewList,setInterviewList] = useState([]);
-
-    useEffect(()=>{
-        user && getInterviews();
-    },[])
-
+  
   const getInterviews = async ()=> {
     const result = await db.select()
                     .from(mockInterview)
@@ -23,6 +19,10 @@ function InterviewList() {
     console.log(result);
     setInterviewList(result)
   }
+    useEffect(()=>{
+        user && getInterviews();
+    },[])
+
 
   return (
     <div>

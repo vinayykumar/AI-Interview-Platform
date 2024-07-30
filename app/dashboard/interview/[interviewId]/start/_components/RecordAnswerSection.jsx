@@ -25,19 +25,6 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
     useLegacyResults: false
   });
 
-  useEffect(()=>{
-    results.map((result)=>{
-        setUserAnswer(prevAns => prevAns + result?.transcript)
-    })
-    // console.log("MockQuestions : ",mockInterviewQuestion)
-  },[results])
-
-  useEffect(()=>{
-    if(!isRecording && userAnswer.length>10){
-        UpdateUserAnswerInDB();
-    }
-  },[userAnswer])
-
   const SaveUserAnswer = async ()=> {
     if(isRecording){
         stopSpeechToText();
@@ -78,6 +65,19 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
     setResults([])
     setLoading(false);
   }
+
+  useEffect(()=>{
+    results.map((result)=>{
+        setUserAnswer(prevAns => prevAns + result?.transcript)
+    })
+  },[results])
+
+  useEffect(()=>{
+    if(!isRecording && userAnswer?.length>10){
+        UpdateUserAnswerInDB();
+    }
+  },[userAnswer])
+
 
   return (
     <div className='flex flex-col justify-center items-center'>

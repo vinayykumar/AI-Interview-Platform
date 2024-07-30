@@ -13,20 +13,22 @@ function Interview({params}) {
   const [interviewData,setInterviewData] = useState({});
   const [webCanEnabled,setWebCamEnabled] = useState(false);
 
-  useEffect(()=>{
-    // console.log(params.interviewId);
-    getInterviewDetails();
-  },[])
-
   const getInterviewDetails = async () => {
     const result = await db.select().from(ai_interview_schema).where(eq(ai_interview_schema.mockId,params.interviewId))
     console.log('Interview Details :',result[0]);
     setInterviewData(result[0])
   }
+  
+  useEffect(()=>{
+    // console.log(params.interviewId);
+    getInterviewDetails();
+  },[])
+
+
 
   return (
     <div className='my-10'>
-      <h2 className='font-bold text-2xl'>Let's Get Started</h2>
+      <h2 className={'font-bold text-2xl'}>Let's Get Started</h2>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
           {/* Details */}

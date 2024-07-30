@@ -14,11 +14,6 @@ function StartInterview({params}) {
   const [mockInterviewQuestion,setMockInterviewQuestion] = useState();
   const [activeQuestion,setActiveQuestion] = useState(0);
 
-  useEffect(()=>{
-    getInterviewDetails();
-    // console.log(mockInterviewQuestion)
-  },[])
-
   const getInterviewDetails = async () => {
     const result = await db.select().from(ai_interview_schema).where(eq(ai_interview_schema.mockId,params.interviewId))
     const JSONResp =  JSON.parse(result[0]?.jsonMockResponse);
@@ -27,6 +22,12 @@ function StartInterview({params}) {
     setInterviewData(result[0]);
     setMockInterviewQuestion(JSONResp);
   }
+  
+  useEffect(()=>{
+    getInterviewDetails();
+    // console.log(mockInterviewQuestion)
+  },[])
+
 
   return (
     <div>
