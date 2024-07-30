@@ -19,7 +19,7 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
   const {user} = useUser();
   const [loading,setLoading] = useState(false);
 
-  const {error, interimResult, isRecording, results, startSpeechToText, stopSpeechToText,}
+  const {error, interimResult, isRecording, results, startSpeechToText, stopSpeechToText, setResults}
    = useSpeechToText({
     continuous: true,
     useLegacyResults: false
@@ -29,6 +29,7 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
     results.map((result)=>{
         setUserAnswer(prevAns => prevAns + result?.transcript)
     })
+    // console.log("MockQuestions : ",mockInterviewQuestion)
   },[results])
 
   useEffect(()=>{
@@ -50,7 +51,7 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
     // console.log(userAnswer);
     setLoading(true);
     
-    const feedbackPrompt = `Question : + ${mockInterviewQuestion[activeQuestion]?.question} ,
+    const feedbackPrompt = `Question : + ${mockInterviewQuestion[activeQuestion]?.Question} ,
     User Answer : ${userAnswer} . Depend on Question and User Answer of the interview question give rating and generate a feedback as area of improvement in just 3-5 lines to improve it in JSON format with rating,feedback fields`;
     
     const result = await chatSession.sendMessage(feedbackPrompt);
@@ -60,8 +61,8 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
     // console.log(JSONFeedBackResponse)
     const resp = await db.insert(UserAnswer).values({
         mockIdRef:interviewData?.mockId,
-        question:mockInterviewQuestion[activeQuestion]?.question,
-        correctAns:mockInterviewQuestion[activeQuestion]?.answer,
+        question:mockInterviewQuestion[activeQuestion]?.Question,
+        correctAns:mockInterviewQuestion[activeQuestion]?.Answer,
         userAns:userAnswer,
         feedback:JSONFeedBackResponse?.feedback,
         rating:JSONFeedBackResponse?.rating,
@@ -71,8 +72,10 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
 
     if(resp){
         toast("User Answer Recorded Successfully")
+        setUserAnswer('')
+        setResults([])
     }
-    setUserAnswer('')
+    setResults([])
     setLoading(false);
   }
 

@@ -34,14 +34,14 @@ function AddNewInterview() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    console.log(jobPosition,jobDesc,jobExperience)
+    // console.log(jobPosition,jobDesc,jobExperience)
 
     const InputPrompt = `Job Position: ${jobPosition} , Job Description: ${jobDesc} , Years of Experience: ${jobExperience} . Depend on this data provided, please generate 5 interview questions with answers in JSON Format. Give Question and answers as field in JSON format`
 
     const result = await chatSession.sendMessage(InputPrompt);
     const mockresponse = (result.response.text()).replace('```json','').replace('```','').trim();
 
-    console.log(JSON.parse(mockresponse));
+    console.log('Parsed Data from Gemini :',JSON.parse(mockresponse));
     setJSONResponse(mockresponse);
 
     if(mockresponse){

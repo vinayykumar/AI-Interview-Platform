@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import QuestionsSection from './_components/QuestionsSection.jsx'
 import RecordAnswerSection from './_components/RecordAnswerSection.jsx'
 import { Button } from '@/components/ui/button.tsx'
+import Link from 'next/link.js'
 
 function StartInterview({params}) {
 
@@ -15,6 +16,7 @@ function StartInterview({params}) {
 
   useEffect(()=>{
     getInterviewDetails();
+    // console.log(mockInterviewQuestion)
   },[])
 
   const getInterviewDetails = async () => {
@@ -43,7 +45,11 @@ function StartInterview({params}) {
         <div  className='flex justify-end gap-6 mb-7'>
           {activeQuestion>0 && <Button variant='outline' onClick={()=>setActiveQuestion(activeQuestion-1)}>Previous Question</Button>}
           {activeQuestion<4 && <Button onClick={()=>setActiveQuestion(activeQuestion+1)}>Next Question</Button> }
-          {activeQuestion==4 && <Button className='bg-red-600 hover:bg-red-700'>End Interview</Button>}
+          {activeQuestion==4 && 
+            <Link href={'/dashboard/interview/'+interviewData?.mockId+'/feedback'}>
+              <Button className='bg-red-600 hover:bg-red-700'>End Interview</Button>
+            </Link>
+            }
           
         </div>
     </div>

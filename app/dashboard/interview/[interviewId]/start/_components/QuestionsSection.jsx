@@ -1,5 +1,5 @@
 // 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Lightbulb, Volume2} from 'lucide-react'
 
 function QuestionsSection({mockInterviewQuestion, activeQuestion, setActiveQuestion}) {
@@ -12,7 +12,7 @@ function QuestionsSection({mockInterviewQuestion, activeQuestion, setActiveQuest
       alert('Browser Does not support text to speech')
     }
   }
-  // console.log(mockInterviewQuestion)
+
   return mockInterviewQuestion &&  (
     <div className='p-5 border rounded-lg my-10 min-w-96'>
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
