@@ -5,6 +5,7 @@ import { eq } from 'drizzle-orm'
 import React, { useEffect, useState } from 'react'
 import QuestionsSection from './_components/QuestionsSection.jsx'
 import RecordAnswerSection from './_components/RecordAnswerSection.jsx'
+import { Button } from '@/components/ui/button.tsx'
 
 function StartInterview({params}) {
 
@@ -33,7 +34,17 @@ function StartInterview({params}) {
                 activeQuestion={activeQuestion}
                 setActiveQuestion={setActiveQuestion}
                 />
-            <RecordAnswerSection></RecordAnswerSection>
+            <RecordAnswerSection
+              interviewData={interviewData}
+              mockInterviewQuestion={mockInterviewQuestion}
+              activeQuestion={activeQuestion}
+            />
+        </div>
+        <div  className='flex justify-end gap-6 mb-7'>
+          {activeQuestion>0 && <Button>Previous Question</Button>}
+          {activeQuestion<=4 && <Button >Next Question</Button> }
+          
+          <Button className='bg-red-600 hover:bg-red-700'>End Interview</Button>
         </div>
     </div>
   )
