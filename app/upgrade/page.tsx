@@ -1,11 +1,8 @@
-'use client'
 import React from 'react'
 import Header from '../dashboard/_components/Header'
-import { useRouter } from 'next/navigation';
 import Footer from '../footer'
 
 function page() {
-  const router = useRouter();
   return (
     <>
         <Header></Header>
