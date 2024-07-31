@@ -1,9 +1,11 @@
 import React from 'react'
+import Header from '../dashboard/_components/Header'
 
 function page() {
   return (
     <>
-        <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <Header></Header>
+<div className="flex items-center justify-center  px-20 py-8 sm:px-6 sm:py-12 lg:px-12 lg:py-12">
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-stretch md:grid-cols-3 md:gap-8">
     <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 shadow-sm">
       <div className="p-6 sm:px-8">

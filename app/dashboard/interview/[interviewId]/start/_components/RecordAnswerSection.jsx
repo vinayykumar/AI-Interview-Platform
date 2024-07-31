@@ -69,7 +69,7 @@ function RecordAnswerSection({mockInterviewQuestion, activeQuestion, interviewDa
 
   useEffect(()=>{
     results.map((result)=>{
-        setUserAnswer(prevAns => prevAns + result?.transcript)
+        setUserAnswer(prevAns => prevsAns + result?.transcript)
     })
   },[results])
 
