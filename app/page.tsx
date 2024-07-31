@@ -4,6 +4,7 @@ import {Button} from '../components/ui/button'
 import Header from "./dashboard/_components/Header";
 import { useRouter } from "next/navigation";
 import {Twitter,Facebook,Instagram,Github} from 'lucide-react'
+import Footer from './footer'
 
 export default function Home() {
   const router = useRouter();
@@ -109,7 +110,7 @@ export default function Home() {
             </div>
         </div>
 
-            <div className="px-20 text-center flex flex-col gap-16 justify-center items-center">
+            <div className="px-24 text-center flex flex-col gap-16 justify-center items-center">
                 <h2 className=" md:text-3xl text-4xl lg:text-5xl font-inter font-bold">Drop us a line or two, we are open for creative minds and collaborations!</h2>
 
                         <a
@@ -120,43 +121,9 @@ export default function Home() {
                                 Explore Now
                             </a>
                 </div>
-                
-                <div className="px-10 pt-20 mt-10 w-full flex flex-col lg:flex-row gap-10 items-center justify-between">
-                        <div className='cursor-pointer' onClick={() => router.replace("/")}>
-                            <span className="relative inline-flex sm:inline">
-                                <span className="bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] blur-lg filter opacity-60 w-full h-full absolute inset-0"></span>
-                                <span className="relative text-2xl md:text-3xl font-bold leading-tight text-gray-900">VirtuoAI</span>
-                            </span>
-                        </div>
-                        <div className="flex px-4 sm:gap-10 md:gap-16 gap-14 md:text-xl lg:text-2xl">
-                            <p>About</p>
-                            <p>Features</p>
-                            <p>Work</p>
-                            <p>Support</p>
-                        </div>
-                        <div className="flex gap-8 md:gap-10">
-                            <Twitter fill="black"/>
-                            <Facebook fill="black"/>
-                            <Instagram />
-                            <Github fill="black"/>
-                        </div>
-                </div>
-
-                <div className="px-12">
-                    <div className="borsder-t-2 w-full  mt-16 px-12"></div>
-                </div>
-                <div className="w-full flex flex-col md:flex-row-reverse lg:flex-row-reverse items-center justify-between px-10 mt-4 py-10 gap-10">
-                    <div className="text-center flex gap-6 text-xl text-gray-600">
-                        <span>Privacy Policy</span>
-                        <span>Terms & Conditions</span>
-                    </div>
-                    <div className="text-center flex gap-10 text-xl text-gray-600">
-                        <h2>© Copyright 2021, All Rights Reserved</h2>
-                    </div>
-                </div>
+                <Footer></Footer>
     </section>
-</div>
-
+    </div>
     </>
   );
 }

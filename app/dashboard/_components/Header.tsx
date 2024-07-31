@@ -34,10 +34,11 @@ function Header() {
             onClick={() => router.replace("/dashboard")}>DashBoard</li> }
           
             <li 
-              className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/questions' && 'text-primary font-bold'}`}>FAQs</li>
+              className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/faqs' && 'text-primary font-bold'}`}
+              onClick={() => router.replace("/faqs")}>FAQs</li>
 
           <li 
-            className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/upgrade' && 'text-primary font-bold'}`}
+            className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/upgrade' && 'text-primary font-bold'}`}
             onClick={() => router.replace("/upgrade")}>Upgrade</li>
 
           <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/how' && 'text-primary font-bold'}`}>How it works?</li>
