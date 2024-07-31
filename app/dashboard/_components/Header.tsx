@@ -14,23 +14,27 @@ function Header() {
 
   return (
     <div className='flex p-6 items-center justify-between border border-t-2 md:px-16 sm:px-14 '>
-      <div>
-      <Image 
+      {/* <Image 
         src='/logo.svg' 
         width={160} 
         height={160} 
         alt='logo'
         onClick={() => router.replace("/")}
-        className='cursor-pointer md:w-40' />
-      </div>
+        className='cursor-pointer md:w-40' /> */}
+        <div className='cursor-pointer md:w-40' onClick={() => router.replace("/")}>
+          <span className="relative inline-flex sm:inline">
+              <span className="bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] blur-lg filter opacity-60 w-full h-full absolute inset-0"></span>
+              <span className="relative md:text-3xl font-bold leading-tight text-gray-900">VirtuoAI</span>
+          </span>
+        </div>
       <div className='flex'>
-        <ul className='hidden md:flex gap-6'>
+        <ul className='hidden md:flex md:gap-12'>
           {user && <li 
             className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard' && 'text-primary font-bold'}`}
             onClick={() => router.replace("/dashboard")}>DashBoard</li> }
           
             <li 
-              className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/questions' && 'text-primary font-bold'}`}>Questions</li>
+              className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/questions' && 'text-primary font-bold'}`}>FAQs</li>
 
           <li 
             className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/upgrade' && 'text-primary font-bold'}`}
