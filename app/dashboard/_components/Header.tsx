@@ -18,7 +18,7 @@ function Header() {
         width={160} 
         height={160} 
         alt='logo'
-        onClick={() => router.replace("/dashboard")}
+        onClick={() => router.replace("/")}
         className='cursor-pointer' />
       <div className='flex'>
         <ul className='hidden md:flex gap-6'>
