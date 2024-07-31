@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { usePathname } from 'next/navigation';
 import { useRouter } from "next/navigation";
+import { Button } from '@/components/ui/button';
 
 function Header() {
 
@@ -12,14 +13,16 @@ function Header() {
   const {user} = useUser();
 
   return (
-    <div className='flex p-6 items-center justify-between border border-t-2 px-16 '>
+    <div className='flex p-6 items-center justify-between border border-t-2 md:px-16 sm:px-14 '>
+      <div>
       <Image 
         src='/logo.svg' 
         width={160} 
         height={160} 
         alt='logo'
         onClick={() => router.replace("/")}
-        className='cursor-pointer' />
+        className='cursor-pointer md:w-40' />
+      </div>
       <div className='flex'>
         <ul className='hidden md:flex gap-6'>
           {user && <li 
@@ -36,8 +39,10 @@ function Header() {
           <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/how' && 'text-primary font-bold'}`}>How it works?</li>
         </ul>
       </div>
-      <div>
-       {user && <UserButton />} 
+      <div className='flex justify-end lg:w-40'>
+       {user ?
+         <UserButton /> : <Button onClick={() => router.replace("/dashboard")}>Get Started</Button>
+         } 
       </div>
     </div>
   );

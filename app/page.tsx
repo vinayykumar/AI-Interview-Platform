@@ -58,9 +58,10 @@ export default function Home() {
                 <p className="mt-5 text-4xl font-bold leading-tight text-gray-900 sm:leading-tight sm:text-5xl lg:text-6xl lg:leading-tight font-pj">
                     <span className="relative inline-flex sm:inline">
                         <span className="bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] blur-lg filter opacity-30 w-full h-full absolute inset-0"></span>
-                        <span className="relative"> VirtuoAI </span>
+                        <span className="relative">VirtuoAI</span>
                     </span>
-                    an AI powered interview platform
+                    <span> an AI powered interview platform
+                    </span>
                 </p>
 
                 <div className="px-8 sm:items-center sm:justify-center sm:px-0 sm:space-x-5 sm:flex mt-9">
