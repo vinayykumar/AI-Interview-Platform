@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { useRouter } from "next/navigation";
 import {Twitter,Facebook,Instagram,Github} from 'lucide-react'
