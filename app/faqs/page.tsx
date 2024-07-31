@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import {
     Accordion,
@@ -8,10 +7,8 @@ import {
   } from "@/components/ui/accordion"
 import Header from '../dashboard/_components/Header'
 import Footer from '../footer'
-import { useRouter } from "next/navigation";
 
 function page() {
-    const router = useRouter();
   return (
     <>
     <Header></Header>
