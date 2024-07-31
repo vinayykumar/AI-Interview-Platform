@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from "next/navigation";
 import {Twitter,Facebook,Instagram,Github} from 'lucide-react'
 
-function footer() {
+function Footer() {
     const router = useRouter();
   return (
     <footer>
@@ -43,4 +43,4 @@ function footer() {
   )
 }
 
-export default footer
+export default Footer;
