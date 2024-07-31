@@ -25,8 +25,7 @@ function StartInterview({params}) {
   
   useEffect(()=>{
     getInterviewDetails();
-    // console.log(mockInterviewQuestion)
-  },[getInterviewDetails])
+  },[])
 
 
   return (
