@@ -15,7 +15,7 @@ function Interview({params}) {
 
   const getInterviewDetails = async () => {
     const result = await db.select().from(ai_interview_schema).where(eq(ai_interview_schema.mockId,params.interviewId))
-    console.log('Interview Details :',result[0]);
+    // console.log('Interview Details :',result[0]);
     setInterviewData(result[0])
   }
   

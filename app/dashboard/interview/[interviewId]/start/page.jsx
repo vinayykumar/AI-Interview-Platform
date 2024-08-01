@@ -17,7 +17,7 @@ function StartInterview({params}) {
   const getInterviewDetails = async () => {
     const result = await db.select().from(ai_interview_schema).where(eq(ai_interview_schema.mockId,params.interviewId))
     const JSONResp =  JSON.parse(result[0]?.jsonMockResponse);
-    console.log(JSONResp);
+    // console.log(JSONResp);
     // console.log(result[0])
     setInterviewData(result[0]);
     setMockInterviewQuestion(JSONResp);

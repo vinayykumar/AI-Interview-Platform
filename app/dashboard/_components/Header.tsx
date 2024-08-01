@@ -21,7 +21,7 @@ function Header() {
         alt='logo'
         onClick={() => router.replace("/")}
         className='cursor-pointer md:w-40' /> */}
-        <div className='cursor-pointer md:w-40' onClick={() => router.replace("/")}>
+        <div className='cursor-pointer md:w-40' onClick={() => router.push("/")}>
           <span className="relative inline-flex sm:inline">
               <span className="bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] blur-lg filter opacity-60 w-full h-full absolute inset-0"></span>
               <span className="relative md:text-3xl font-bold leading-tight text-gray-900">VirtuoAI</span>
@@ -31,22 +31,22 @@ function Header() {
         <ul className='hidden md:flex md:gap-12'>
           {user && <li 
             className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard' && 'text-primary font-bold'}`}
-            onClick={() => router.replace("/dashboard")}>DashBoard</li> }
+            onClick={() => router.push("/dashboard")}>DashBoard</li> }
           
             <li 
               className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/faqs' && 'text-primary font-bold'}`}
-              onClick={() => router.replace("/faqs")}>FAQs</li>
+              onClick={() => router.push("/faqs")}>FAQs</li>
 
           <li 
             className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/upgrade' && 'text-primary font-bold'}`}
-            onClick={() => router.replace("/upgrade")}>Upgrade</li>
+            onClick={() => router.push("/upgrade")}>Upgrade</li>
 
           <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${path=='/dashboard/how' && 'text-primary font-bold'}`}>How it works?</li>
         </ul>
       </div>
       <div className='flex justify-end lg:w-40'>
        {user ?
-         <UserButton /> : <Button onClick={() => router.replace("/dashboard")}>Get Started</Button>
+         <UserButton /> : <Button onClick={() => router.push("/dashboard")}>Get Started</Button>
          } 
       </div>
     </div>

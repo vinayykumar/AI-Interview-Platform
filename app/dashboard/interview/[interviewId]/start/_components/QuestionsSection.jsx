@@ -1,12 +1,21 @@
-// 'use client'
-import React, { useEffect } from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import {Lightbulb, Volume2} from 'lucide-react'
 
 function QuestionsSection({mockInterviewQuestion, activeQuestion, setActiveQuestion}) {
+  const [isSpeaking,setIsSpeaking] = useState(false);
   const textToSpeech = (text) => {
     if('speechSynthesis' in window){
-      const speech = new SpeechSynthesisUtterance(text);
-      window.speechSynthesis.speak(speech);
+      if(!isSpeaking){
+        const speech = new SpeechSynthesisUtterance(text);
+        speech.onstart = () => {
+          setIsSpeaking(true);
+        }
+        speech.onend = () => {
+          setIsSpeaking(false); 
+        }
+        window.speechSynthesis.speak(speech);
+      }
     }
     else{
       alert('Browser Does not support text to speech')
@@ -38,7 +47,7 @@ function QuestionsSection({mockInterviewQuestion, activeQuestion, setActiveQuest
           </h2>
           <h2 className='mt-4 text-sm text-blue-800'>Click on Record Answer when you want to answer the question. At
               the end of interview we will give you the feedback along with
-              correct answer for each of question and your answer to comapre
+              correct answer for each of question and your answer to compare
               it.
           </h2>
         </div>

@@ -81,7 +81,7 @@ function Feedback({ params }) {
             ))}
         </>
       )}
-      <Button onClick={() => router.replace("/dashboard")} className="mt-8">
+      <Button onClick={() => router.push("/dashboard")} className="mt-8">
         Go to Dashboard
       </Button>
     </div>
