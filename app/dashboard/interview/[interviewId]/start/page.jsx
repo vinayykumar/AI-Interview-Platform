@@ -30,7 +30,8 @@ function StartInterview({params}) {
 
   return (
     <div>
-        <div className='grid grid-cols-2 gap-10'>
+        {/* <div className='grid grid-cols-2 gap-10'> */}
+        <div className='flex flex-col gap-10 p-4 md:flex-row'>
             <QuestionsSection 
                 mockInterviewQuestion={mockInterviewQuestion}
                 activeQuestion={activeQuestion}

@@ -5,6 +5,7 @@ import { UserButton, useUser } from '@clerk/nextjs';
 import { usePathname } from 'next/navigation';
 import { useRouter } from "next/navigation";
 import { Button } from '@/components/ui/button';
+// import Sidebar from './Sidebar'
 
 function Header() {
 
@@ -21,12 +22,13 @@ function Header() {
         alt='logo'
         onClick={() => router.replace("/")}
         className='cursor-pointer md:w-40' /> */}
-        <div className='cursor-pointer md:w-40' onClick={() => router.push("/")}>
-          <span className="relative inline-flex sm:inline">
-              <span className="bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] blur-lg filter opacity-60 w-full h-full absolute inset-0"></span>
-              <span className="relative md:text-3xl font-bold leading-tight text-gray-900">VirtuoAI</span>
-          </span>
-        </div>
+        {/* <Sidebar></Sidebar> */}
+            <div className='cursor-pointer md:w-40' onClick={() => router.push("/")}>
+              <span className="relative inline-flex sm:inline">
+                  <span className="bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] blur-lg filter opacity-60 w-full h-full absolute inset-0"></span>
+                  <span className="relative md:text-3xl font-bold leading-tight text-gray-900">VirtuoAI</span>
+              </span>
+            </div>
       <div className='flex'>
         <ul className='hidden md:flex md:gap-12'>
           {user && <li 

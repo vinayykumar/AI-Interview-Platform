@@ -34,8 +34,7 @@ export default function Page() {
         </h2>
 
         <p className="mt-4 leading-relaxed text-white/90">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-          quibusdam aperiam voluptatum.
+        VirtuoAI is an AI-powered interview platform designed to help users prepare for job interviews. By inputting the job position, required skills, and years of experience, our AI generates personalized interview questions. This helps users practice and receive feedback to improve their interview performance.
         </p>
       </div>
     </section>
