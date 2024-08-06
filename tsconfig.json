@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/dashboard/layout.jsx", "app/dashboard/_components/Header.tsx", "app/dashboard/interview/[interviewId]/page.jsx", "app/dashboard/interview/[interviewId]/start/_components/QuestionsSection.jsx", "app/dashboard/_components/IntereviewCard.jsx", "app/dashboard/_components/Sidebar.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/dashboard/layout.jsx", "app/dashboard/_components/Header.tsx", "app/dashboard/interview/[interviewId]/page.jsx", "app/dashboard/interview/[interviewId]/start/_components/QuestionsSection.jsx", "app/dashboard/_components/IntereviewCard.jsx", "app/dashboard/_components/Sidebar.tsx"],
   "exclude": ["node_modules"]
 }
